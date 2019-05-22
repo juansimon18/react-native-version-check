@@ -6,6 +6,7 @@ import { getVersionInfo } from './versionInfo';
 export type GetAppStoreUrlOption = {
   country?: string,
   appID: string,
+  appName: string,
   ignoreErrors?: boolean,
 };
 
@@ -29,8 +30,8 @@ export const getAppStoreUrl = async (
     }
 
     const countryCode = option.country ? `${option.country}/` : '';
-
-    return `https://itunes.apple.com/${countryCode}app/id${option.appID}`;
+    // console.log('check url',`https://itunes.apple.com/${countryCode}app/${option.appName}/id${option.appID}`)
+    return `https://itunes.apple.com/${countryCode}app/${option.appName}/id${option.appID}`;
   } catch (e) {
     if (option.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
